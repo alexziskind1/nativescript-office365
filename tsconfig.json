@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "removeComments": true,
+        "experimentalDecorators": true,
+        "sourceMap": true,
+        "noEmitHelpers": true,
+        "noEmitOnError": false
+    },
+    "files": [
+      "demo/node_modules/tns-core-modules/tns-core-modules.d.ts",
+      "typings/ios.d.ts",
+      "typings/MSGraphSDK_NXOAuth2Adapter.d.ts",
+      "typings/MSGraphSDK.d.ts",
+      "office365.ts"
+    ],
+    "compileOnSave": false
+}

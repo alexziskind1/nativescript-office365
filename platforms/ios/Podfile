@@ -1,0 +1,2 @@
+pod 'MSGraphSDK', '~> 0.10'
+pod 'MSGraphSDK-NXOAuth2Adapter'
