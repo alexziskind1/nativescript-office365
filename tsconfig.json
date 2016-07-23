@@ -13,6 +13,7 @@
       "typings/ios.d.ts",
       "typings/MSGraphSDK_NXOAuth2Adapter.d.ts",
       "typings/MSGraphSDK.d.ts",
+      "office365.d.ts",
       "office365.ts"
     ],
     "compileOnSave": false

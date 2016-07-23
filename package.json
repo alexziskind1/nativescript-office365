@@ -1,7 +1,7 @@
 {
 	"name": "nativescript-office365",
-	"version": "0.0.1",
-	"description": "Office365 Graph API.",
+	"version": "0.1.1",
+	"description": "Office 365 Graph API plugin for NativeScript.",
 	"main": "office365.js",
 	"nativescript": {
 		"platforms": {

@@ -1,7 +1,8 @@
 import * as applicationModule from 'application';
 import * as utils from 'utils/utils';
+import {InitOptions} from "nativescript-office365";
 
-export class Office365 {
+class Office365 {
 
   public client: MSGraphClient;
   public accessToken: string;
@@ -10,10 +11,8 @@ export class Office365 {
     NXOAuth2AuthenticationProvider.setClientIdScopes(clientId, utils.ios.collections.jsArrayToNSArray (scopes));
   }
 
-  public login<T>(clientId: string, scopes: Array<string>) : Promise<T> {
+  public login<T>() : Promise<T> {
     var iosApp = applicationModule.ios;
-
-    NXOAuth2AuthenticationProvider.setClientIdScopes(clientId, utils.ios.collections.jsArrayToNSArray (scopes));
 
     return new Promise<T>((resolve, reject)=>{
         if (this.tryLoginSilent()) {
@@ -72,4 +71,40 @@ export class Office365 {
       }
       return true;
   }
+}
+
+export var instance : Office365 = null;
+
+export function init(options: InitOptions) : Promise<any> {
+  return new Promise(function (resolve, reject) {
+    try {
+      if (instance !== null) {
+        reject("You already ran init");
+        return;
+      }
+
+      instance = new Office365();
+      instance.setClientIdScopes(options.clientId, options.scopes);
+      resolve(instance);
+    } catch (ex) {
+      console.log("Error in office365.init: " + ex);
+      reject(ex);
+    }
+  });
+}
+
+export function accessToken() : string {
+    return instance.accessToken;
+}
+export function setClientIdScopes(clientId: string, scopes: Array<string>) {
+    instance.setClientIdScopes(clientId, scopes);
+}
+export function login<T>() : Promise<T> {
+    return instance.login();
+}
+export function logout<T>() : Promise<T> {
+    return instance.logout();
+}
+export function accessTokenExpired() : boolean {
+    return instance.accessTokenExpired();
 }

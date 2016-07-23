@@ -1,10 +1,19 @@
 declare module "nativescript-office365" {
-    export class Office365 {
-        public accessToken: string;
-        public setClientIdScopes(clientId: string, scopes: Array<string>);
-        public login<T>(clientId: string, scopes: Array<string>) : Promise<T>;
-        public logout<T>():Promise<T>;
-        public accessTokenExpired():boolean;
+
+     /**
+     * The options object passed into the init function.
+     */
+    export interface InitOptions {
+        clientId: string;
+        scopes: Array<string>;
     }
+
+    export function init(options: InitOptions): Promise<any>;
+    export function accessToken() : string;
+    export function setClientIdScopes(clientId: string, scopes: Array<string>);
+    export function login<T>() : Promise<T>;
+    export function logout<T>() : Promise<T>;
+    export function accessTokenExpired() : boolean;
+     
 }
 
