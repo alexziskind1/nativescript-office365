@@ -1,5 +1,4 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo">
-
     <StackLayout>
         <ListView items="{{ children }}">
             <ListView.itemTemplate>
@@ -7,5 +6,4 @@
             </ListView.itemTemplate>
         </ListView>
     </StackLayout>
-
 </Page>

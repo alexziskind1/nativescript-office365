@@ -1,8 +1,7 @@
 import observable = require("data/observable");
 import { ObservableArray  } from "data/observable-array";
-import { office365 } from './office365-service';
+import * as o365 from 'nativescript-office365';
 import * as httpModule from "http";
-
 
 export class ExplorerModel extends observable.Observable {
 
@@ -19,7 +18,7 @@ export class ExplorerModel extends observable.Observable {
             method: "GET",
             url: "https://graph.microsoft.com/v1.0/me/drive/items/root?expand=children",
             headers: {
-                Authorization: "Bearer " + office365.accessToken
+                Authorization: "Bearer " + o365.accessToken()
             }
         };
         httpModule.getJSON(req)
@@ -36,6 +35,4 @@ export class ExplorerModel extends observable.Observable {
             this.children.push(children[i]);
         }
     }
-
-
 }
